@@ -12,7 +12,7 @@ console.log(p);
 exports.loopPics = async int => {
 	return new Promise((res, rej) => {
 		fs.readdir(p + int, (err, data) => {
-			return res(data);
+			res(data);
 		});
 	});
 };

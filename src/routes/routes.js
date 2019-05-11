@@ -27,7 +27,7 @@ router.get("/getParams/:id", (req, res) => {
 router.get("/output", async (req, res) => {
 	const title = await SaveData.fetchData();
 	const img = await pics.loopPics(app.get("picsNr"));
-	console.log(img);
+	console.log(pics);
 	// pics.loopPics();
 	// pics.picVal()
 	// console.log(pics.picVal());
@@ -35,7 +35,7 @@ router.get("/output", async (req, res) => {
 		page: "output",
 		title,
 		nr: app.get("picsNr"),
-		pic: img
+		img: img
 	});
 });
 
