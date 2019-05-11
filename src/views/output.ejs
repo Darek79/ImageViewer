@@ -8,8 +8,9 @@
     <% for(let items of title) { %>
         <a href="/getParams/<%= items.id %>"><%= items.title %></a> 
         <% } %>
-    <% for(let img of pic) { %>
-    <img src="/set<%=nr%>/<%=img%>" alt="test">
+        <% for(let files of pic) { %>
+    <img src="/set<%=nr%>/<%=files%>" alt="test">
+    <%= console.log(files)%>
     <% } %>
             
 
