@@ -11,3 +11,26 @@ img {
 	height: 300px;
 	object-fit: contain;
 }
+#fullWrapper {
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 255, 0, 0.9);
+}
+
+#fullView {
+	width: 80%;
+	height: 90%;
+	margin: auto;
+	/* background-color: rgb(255, 255, 255); */
+	/* opacity: 1; */
+}
+.added {
+	object-fit: contain;
+	object-position: center;
+	width: 100% !important;
+	height: 100% !important;
+}
