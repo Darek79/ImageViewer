@@ -19,24 +19,24 @@ router.post("/getData", async (req, res) => {
 	res.redirect("/");
 });
 
-router.get("/getParams/:id", (req, res) => {
-	app.set("picsNr", req.params.id);
-	res.redirect("/output");
-});
-
 router.get("/output", async (req, res) => {
 	const title = await SaveData.fetchData();
-	const img = await pics.loopPics(app.get("picsNr"));
-	console.log(pics);
+	const setNr = await app.get("picsNr");
+	const img = await pics.loopPics(setNr);
 	// pics.loopPics();
 	// pics.picVal()
 	// console.log(pics.picVal());
 	res.render("output", {
 		page: "output",
 		title,
-		nr: app.get("picsNr"),
+		nr: setNr,
 		img: img
 	});
+});
+
+router.get("/getParams/:id", (req, res) => {
+	app.set("picsNr", req.params.id);
+	res.redirect("/output");
 });
 
 module.exports = router;

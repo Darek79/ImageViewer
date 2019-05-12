@@ -2,20 +2,29 @@
 <html>
 <meta charset="utf-8">
 <title><%= page%></title>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
 <script defer src="/js/pageEffects.js"></script>
+
 <link rel="stylesheet" href="/style/styling.css">
 <body>
-
-    <h1>output</h1>
-    <% for(let items of title) { %>
+    <div id="set">
+        <h1>output</h1>
+    <% for(let items of title) { %>   
         <a href="/getParams/<%= items.id %>"><%= items.title %></a> 
         <% } %>
-
-    <% for(let files of img) { %> %>
-    <img src="/set<%=nr%>/<%=files%>" alt="test">
-    <%= console.log(files)%>
-    <% } %>
-            
+    </div>
+    
+    <div id="img_wrapper">
+        <% if(img) { %>
+            <% for(let files of img) { %>
+            <img hidden class="img" src="/set<%=nr%>/<%=files%>" alt="test">
+            <%= console.log(files)%>
+            <% } %>
+            <% } else { %>
+                    <p>no pics available yet</p>
+                <% } %>  
+    </div>
+  
 
 </body>
 </html>
