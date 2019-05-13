@@ -7,23 +7,28 @@
 
 <link rel="stylesheet" href="/style/styling.css">
 <body>
+
     <div id="set">
-        <h1>Gallery <%=nr%></h1>
+            <h1>Gallery <%=nr%></h1>
+        
+        
     <% for(let items of title) { %>   
         <a href="/getParams/<%= items.id %>"><%= items.title %></a> 
         <% } %>
     </div>
     
-    <div id="img_wrapper">
+    
+        <div id="img_wrapper">
         <% if(img) { %>
             <% for(let files of img) { %>
-            <img hidden class="img" src="/set<%=nr%>/<%=files%>" alt="test">
-            <%= console.log(files)%>
+          <img hidden class="img" src="/set<%=nr%>/<%=files%>" alt="test">
             <% } %>
             <% } else { %>
                     <p>no pics available yet</p>
-                <% } %>  
-    </div>
+                <% } %>         
+        </div>
+   
+
     <div id="fullWrapper">
         <div id="fullView"></div>
     </div>

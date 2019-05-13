@@ -10,3 +10,5 @@ app.use(express.static("./src/public"));
 app.use(router);
 
 app.listen(8080);
+
+// https://medium.com/@binyamin/creating-a-node-express-webpack-app-with-dev-and-prod-builds-a4962ce51334
