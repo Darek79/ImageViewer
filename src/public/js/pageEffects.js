@@ -29,11 +29,12 @@ const fullV = async () => {
     arr.forEach((val, i) => {
       val.addEventListener("click", e => {
         wr.style.display = "flex";
-        e.target.classList.remove("img");
-        e.target.classList.add("added");
-        imgDis.appendChild(e.target);
-        console.log("click");
-        res(e.target);
+        const cloned = e.target.cloneNode(false);
+        cloned.classList.remove("img");
+        cloned.classList.add("added");
+        imgDis.appendChild(cloned);
+        console.log(imgDis);
+        res(cloned);
       });
     });
   });
@@ -47,31 +48,23 @@ const closeIMG = e => {
   const p = document.createElement("p");
   const x = document.createTextNode("x");
   p.appendChild(x);
-  p.style = `
-	display: absolute;
-	top: 0;
-	font-size:50px;
-	cursor: pointer;
-	`;
   wr.appendChild(p);
+  console.log(window.pageXOffset);
+  console.log(window.pageYOffset);
+  p.style = `
+  position: absolute;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  `;
   p.id = "close";
   const pClose = document.getElementById("close");
   pClose.addEventListener("click", () => {
-    wr.style.display = "none";
+    imgDis.innerHTML = "";
+    wr.style.display = "";
+    // document.body.style.overflow = "initial";
   });
 };
-
-// el.then(el => {
-// 	el.addEventListener(
-// 		("click",
-// 		() => {
-// 			wr.style.display = "none";
-// 			e.target.classList.add("img");
-// 			e.target.classList.remove("added");
-// 		})
-// 	);
-// });
-
-// const loopIMG = arr => {
-
-// };
