@@ -15,7 +15,7 @@ console.log(p);
 // SET STORAGE
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, "uploads");
+		cb(null, p);
 	},
 	filename: function(req, file, cb) {
 		cb(null, file.fieldname + "-" + Date.now());
@@ -44,10 +44,10 @@ router.post("/upload", upload.single("picture"), (req, res) => {
 		image: Buffer.from(encodeIMG, "base64")
 	};
 	console.log(finalIMG);
-	fs.writeFile(p, finalIMG, err => {
-		if (err) throw err;
-		console.log("img saved");
-	});
+	// fs.writeFile(p, finalIMG, err => {
+	// 	if (err) throw err;
+	// 	console.log("img saved");
+	// });
 	res.redirect("/");
 });
 
