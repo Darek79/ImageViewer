@@ -6,7 +6,7 @@ console.log(p);
 
 const checkP = fs.existsSync(p);
 
-console.log(checkP);
+// console.log(checkP);
 
 module.exports = class SaveData {
   constructor(title) {
@@ -24,9 +24,9 @@ module.exports = class SaveData {
     });
   }
   async saveFile() {
-    this.id = Math.floor(Math.random() * 100);
-    await this.id.toString();
     const data = await SaveData.fetchData();
+    this.id = data.length + 1;
+    await this.id.toString();
     await data.push({ title: this.title, id: this.id });
     return new Promise((res, rej) => {
       fs.writeFile(p, JSON.stringify(data), err => {

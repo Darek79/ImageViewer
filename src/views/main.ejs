@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html>
-<meta charset="utf-8">
-<title><%= page%></title>
+<%include ./includes/head.ejs %>
+</head>
 <body>
+  <div id="form_wrapper">
+    <div id="inner_form_wrapper">
 
-  <h1>hello</h1>
+    
+  <h1><%= page%></h1>
+  
   <form action="/getData" method="POST">
   <input type="text" name="title">
   <button type="submit">send</button>
   </form>
+ 
+
+  <form action="/upload" enctype="multipart/form-data" method="POST"> 
+    <input type="file" name="picture" />
+    <input type="submit" value="Upload Photo"/>
+  </form>
+
   <a href="/output"><button type="text">output</button></a>
+
+    </div>
+  </div>
 
 </body>
 </html>

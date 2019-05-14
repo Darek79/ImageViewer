@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<meta charset="utf-8">
-<title><%= page%></title>
+<%include ./includes/head.ejs %>
+
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
 <script defer src="/js/pageEffects.js"></script>
 
-<link rel="stylesheet" href="/style/styling.css">
+</head>  
 <body>
 
     <div id="set">
@@ -15,6 +13,7 @@
     <% for(let items of title) { %>   
         <a href="/getParams/<%= items.id %>"><%= items.title %></a> 
         <% } %>
+        <a href="/">home</a>
     </div>
     
     
