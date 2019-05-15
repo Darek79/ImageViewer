@@ -1,14 +1,11 @@
-
 // const path = require("path");
 // const fs = require("fs");
-
 
 // https://flaviocopes.com/node-file-paths/
 // https://stackoverflow.com/questions/16316330/how-to-write-file-if-parent-folder-doesnt-exist
 
 // const x = path.join(path.resolve("data","file.json"));
 // console.log(fs.existsSync(x));
-
 
 // const createText=async()=>{
 //     return new Promise((res,rej)=>{
@@ -30,7 +27,7 @@
 // }
 
 // const chkFile=async()=>{
-  
+
 //     return new Promise((res,rej)=>{
 //         fs.readFile(x,(err,data)=>{
 //             if(!fs.existsSync(x)){
@@ -49,18 +46,17 @@
 //     const arr = await chkFile();
 //     await arr.push("text");
 //     return await arr;
-    
-    // console.log(arr);
-    // return await arr;
-    // const strg = await Buffer.concat(arr).toString();
-    // console.log(strg);
-    // fs.writeFile(x,strg,(err)=>{
-    //     if (err) throw err;
-    //     console.log("file saved");
-    // })
+
+// console.log(arr);
+// return await arr;
+// const strg = await Buffer.concat(arr).toString();
+// console.log(strg);
+// fs.writeFile(x,strg,(err)=>{
+//     if (err) throw err;
+//     console.log("file saved");
+// })
 // }
 // writeFile();
-
 
 // (async()=>{
 //     console.log(`msg is: ${await writeFile()}`);
