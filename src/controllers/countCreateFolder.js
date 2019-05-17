@@ -23,22 +23,22 @@ module.exports = class CheckFolders {
 	// 		}, 1000);
 	// 	});
 
-		Promise.all([promiseList]).then(arrList => {
-			arrList.forEach(array => {
-				console.log("Array return from promiseList object ", array);
-			});
-		});
-	}
+	// 	Promise.all([promiseList]).then(arrList => {
+	// 		arrList.forEach(array => {
+	// 			console.log("Array return from promiseList object ", array);
+	// 		});
+	// 	});
+	// }
 
-	async pResolve(pr) {
-		return new Promise((res, rej) => {
-			res(pr);
-		});
-	}
+	// async pResolve(pr) {
+	// 	return new Promise((res, rej) => {
+	// 		res(pr);
+	// 	});
+	// }
 
 	async checkFilesLength() {
 		const getDir = await this.checkGalleryFolder();
-		console.log(getDir);
+		let arr = [];
 
 		let folderList = new Promise((res, rej) => {
 			getDir.forEach(val => {
@@ -46,8 +46,14 @@ module.exports = class CheckFolders {
 				fs.readdir(val, (err, data) => {
 					obj.path = val;
 					obj.img = data.length;
+					let x = Promise.resolve(obj);
+					x.then(data => {
+						arr.push(data);
+						if (arr.length === getDir.length) {
+							res(arr);
+						}
+					});
 					// console.log(obj);
-					res(obj);
 				});
 			});
 		});
@@ -63,11 +69,11 @@ module.exports = class CheckFolders {
 	// async function printFiles () {
 	// 	const files = await getFilePaths();
 
-		// await Promise.all(files.map(async (file) => {
-		//   const contents = await fs.readFile(file, 'utf8')
-		//   console.log(contents)
-		// }));
-	  // }
+	// await Promise.all(files.map(async (file) => {
+	//   const contents = await fs.readFile(file, 'utf8')
+	//   console.log(contents)
+	// }));
+	// }
 
 	// async getEmptyFolders() {
 	// 	const folders = await this.checkGalleryFolder();
