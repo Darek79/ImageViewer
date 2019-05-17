@@ -25,12 +25,14 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
 	const checkFolder = new folderCheck();
-	checkFolder.checkGalleryFolder();
-	checkFolder.checkFilesLength();
-	// checkFolder.getEmptyFolders();
-	checkFolder.getEmptyFolders();
+	await checkFolder.checkGalleryFolder();
+	await checkFolder.checkFilesLength();
+	// await checkFolder.check();
+	// const x = await checkFolder.checkFilesLength();
+	// console.log(await checkFolder.checkFilesLength());
+
 	res.render("main", { page: "mainPage" });
 	// res.redirect("/output");
 });
