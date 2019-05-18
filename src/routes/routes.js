@@ -14,11 +14,11 @@ const p = path.join(__dirname, "..", "public", "testUpload");
 console.log(p);
 
 // SET STORAGE
-var storage = multer.diskStorage({
-	destination: function(req, file, cb) {
-		cb(null, p);
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, app.get("finalPath"));
 	},
-	filename: function(req, file, cb) {
+	filename: (req, file, cb) => {
 		cb(null, file.fieldname + "-" + Date.now());
 	}
 });
@@ -27,14 +27,13 @@ var upload = multer({ storage: storage });
 
 router.get("/", async (req, res) => {
 	const checkFolder = new folderCheck();
-	await checkFolder.checkGalleryFolder();
-	await checkFolder.checkFilesLength();
-	// await checkFolder.check();
-	// const x = await checkFolder.checkFilesLength();
-	// console.log(await checkFolder.checkFilesLength());
+	checkFolder.checkGalleryFolder();
+	checkFolder.checkFilesLength();
+	const finalPath = await checkFolder.getUploadFolder();
+	console.log(finalPath);
+	app.set("finalPath", finalPath);
 
 	res.render("main", { page: "mainPage" });
-	// res.redirect("/output");
 });
 
 router.post("/getData", async (req, res) => {
@@ -54,10 +53,7 @@ router.post("/upload", upload.single("picture"), (req, res) => {
 		image: Buffer.from(encodeIMG, "base64")
 	};
 	console.log(finalIMG);
-	// fs.writeFile(p, finalIMG, err => {
-	// 	if (err) throw err;
-	// 	console.log("img saved");
-	// });
+
 	res.redirect("/");
 });
 
